@@ -12,7 +12,7 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity {
 
     private EditText editText;
-    private Button button;
+    private Button button, btnClear;
     private TextView textView;
     //Strings at 0th index is unused, for simplicity
     private static String ones[] =
@@ -39,6 +39,15 @@ public class MainActivity extends AppCompatActivity {
         editText = (EditText) findViewById(R.id.etInput);
         button = (Button) findViewById(R.id.btnConvert);
         textView = (TextView) findViewById(R.id.tvResult);
+        btnClear = (Button) findViewById(R.id.btnClear);
+
+        btnClear.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                editText.setText("");
+                textView.setText("Your Result will be Displayed Here");
+            }
+        });
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -49,6 +58,8 @@ public class MainActivity extends AppCompatActivity {
                 hideKeyboard(MainActivity.this);
             }
         });
+
+
     }
 
     //n is a one or two digit number
