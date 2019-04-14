@@ -1,8 +1,10 @@
 package com.example.numbertowords;
 
+import android.app.Activity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -44,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
                 Long inputNumber = Long.parseLong(editText.getText().toString());
 
                 convertToWords(inputNumber);
+                hideKeyboard(MainActivity.this);
             }
         });
     }
@@ -71,18 +74,18 @@ public class MainActivity extends AppCompatActivity {
 
         // handles digits at ten millions and hundred
         // millions places (if any)
-        result += numToWords((int) (n / 10000000), "Crores ");
+        result += numToWords((int) (n / 10000000), "Crore ");
 
         // handles digits at hundred thousands and one
         // millions places (if any)
-        result += numToWords((int) ((n / 100000) % 100), "Lakhs ");
+        result += numToWords((int) ((n / 100000) % 100), "Lakh ");
 
         // handles digits at thousands and tens thousands
         // places (if any)
-        result += numToWords((int) ((n / 1000) % 100), "Thousands ");
+        result += numToWords((int) ((n / 1000) % 100), "Thousand ");
 
         // handles digit at hundreds places (if any)
-        result += numToWords((int) ((n / 100) % 10), "Hundreds ");
+        result += numToWords((int) ((n / 100) % 10), "Hundred ");
 
         if (n > 100 && n % 100 > 0) {
             result += "and ";
@@ -92,5 +95,16 @@ public class MainActivity extends AppCompatActivity {
         result += numToWords((int) (n % 100), "");
 
         textView.setText(result);
+    }
+
+    public static void hideKeyboard(Activity activity) {
+        InputMethodManager imm = (InputMethodManager) activity.getSystemService(Activity.INPUT_METHOD_SERVICE);
+        //Find the currently focused view, so we can grab the correct window token from it.
+        View view = activity.getCurrentFocus();
+        //If no view currently has focus, create a new one, just so we can grab a window token from it
+        if (view == null) {
+            view = new View(activity);
+        }
+        imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
 }

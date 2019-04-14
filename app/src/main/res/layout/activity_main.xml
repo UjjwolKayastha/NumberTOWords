@@ -5,34 +5,57 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    android:layout_margin="10dp"
+    android:background="@drawable/backdesign"
     android:orientation="vertical"
-    android:padding="30dp"
+    android:gravity="center"
+    android:padding="20dp"
     >
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/white"
+        android:textSize="30sp"
+        android:padding="15dp"
+        android:layout_marginBottom="30dp"
+        android:text="NumtoWords Converter"/>
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Enter a number here"
         android:id="@+id/etInput"
+        android:paddingLeft="5dp"
+        android:textColorHint="@android:color/white"
+        android:textColor="@android:color/white"
         />
 
     <Button
-        android:layout_width="match_parent"
+        android:layout_marginTop="40dp"
+        android:layout_width="wrap_content"
+        android:textColor="@android:color/white"
         android:layout_height="wrap_content"
+        android:padding="10dp"
         android:text="Convert into Words"
+        android:background="@drawable/buttondesign"
         android:id="@+id/btnConvert"/>
 
     <TextView
         android:layout_width="match_parent"
+        android:textColor="@android:color/white"
         android:layout_marginTop="10dp"
         android:layout_height="wrap_content"
-        android:text="RESULT"/>
+        android:textSize="20sp"
+        android:padding="3dp"
+        android:text="RESULT: "
+        android:layout_marginBottom="1dp" />
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:textColor="@android:color/white"
+        android:layout_marginTop="2dp"
         android:id="@+id/tvResult"
+        android:textSize="30sp"
+        android:padding="15dp"
         android:text="Your Result will be Displayed Here"/>
 </LinearLayout>
